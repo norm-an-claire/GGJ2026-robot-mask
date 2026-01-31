@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://1obqxmhgvig6"]
+
+[ext_resource type="Script" uid="uid://c5ak6csptsdj5" path="res://masks/base_mask.gd" id="1_gsj04"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8dp0l"]
+
+[node name="BaseMask" type="Area2D" unique_id=1719042748]
+collision_layer = 32
+collision_mask = 0
+script = ExtResource("1_gsj04")
+mask_textures = Array[Texture2D]([null, null, null])
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1815133095]
+shape = SubResource("RectangleShape2D_8dp0l")
+
+[node name="MaskSprite" type="Sprite2D" parent="." unique_id=855487841]
+unique_name_in_owner = true

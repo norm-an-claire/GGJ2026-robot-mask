@@ -17,7 +17,8 @@ var mask_color_modulate: Dictionary[int, Color] = {
 
 
 func _ready() -> void:
-	mask_pickup_area.body_entered.connect(_on_body_entered)
+	print(self, " ready!")
+	mask_pickup_area.area_entered.connect(_on_mask_pickup)
 
 
 func _physics_process(delta: float) -> void:
@@ -44,10 +45,9 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 
-func _on_body_entered(body: Node2D) -> void:
-	print("my body has been entered by ", body, "!")
-
-	# TODO - make a Mask class/scene
-	# if body is Mask:
-	# 	modulate = mask_color_modulate[ body.mask_color ]
-	#	SignalBus.player_picked_up_mask.emit( body.mask_color )
+func _on_mask_pickup(body: Area2D) -> void:
+	if body is Mask:
+		print(self, "picked up a mask!")
+		modulate = mask_color_modulate[ body.mask_color + 1]
+		SignalBus.player_picked_up_mask.emit( body.mask_color )
+		body.player_picked_me_up()

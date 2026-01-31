@@ -31,3 +31,5 @@ collision_mask = 32
 position = Vector2(0, -4)
 shape = SubResource("CircleShape2D_3eadt")
 debug_color = Color(0.96146566, 0, 0.4509501, 0)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1041408660]

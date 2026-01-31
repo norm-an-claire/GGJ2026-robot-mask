@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://cp4eccy3ub55u" path="res://assets/ground.png" id="1_6d8bg"]
 [ext_resource type="PackedScene" uid="uid://dltd4tixo7vb7" path="res://characters/player.tscn" id="2_u4xt3"]
 [ext_resource type="Script" uid="uid://b0xawosbd7a3y" path="res://levels/non_deadly_pit.gd" id="3_keei5"]
+[ext_resource type="PackedScene" uid="uid://1obqxmhgvig6" path="res://masks/base_mask.tscn" id="4_dmrny"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_keei5"]
 texture = ExtResource("1_6d8bg")
@@ -57,3 +58,7 @@ shape = SubResource("WorldBoundaryShape2D_keei5")
 position = Vector2(608, 0)
 rotation = 3.1415927
 shape = SubResource("WorldBoundaryShape2D_ah2my")
+
+[node name="BaseMask" parent="." unique_id=1387103882 instance=ExtResource("4_dmrny")]
+position = Vector2(240, 520)
+collision_mask = 32

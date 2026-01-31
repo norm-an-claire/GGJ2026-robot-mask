@@ -18,6 +18,15 @@ config/features=PackedStringArray("4.6", "Forward Plus")
 Globals="*uid://b3hw82ao8dv5g"
 SignalBus="*uid://c8utlqf3pjrnk"
 
+[layer_names]
+
+2d_physics/layer_1="World"
+2d_physics/layer_2="PlayerHitbox"
+2d_physics/layer_3="BlueEnemy"
+2d_physics/layer_4="RedEnemy"
+2d_physics/layer_5="YellowEnemy"
+2d_physics/layer_6="MaskPickup"
+
 [physics]
 
 3d/physics_engine="Jolt Physics"
