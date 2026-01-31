@@ -1,0 +1,71 @@
+[gd_scene format=4 uid="uid://b8cchn0ptmnk4"]
+
+[ext_resource type="Texture2D" uid="uid://cp4eccy3ub55u" path="res://assets/ground.png" id="1_6d8bg"]
+[ext_resource type="PackedScene" uid="uid://dltd4tixo7vb7" path="res://characters/player.tscn" id="2_u4xt3"]
+[ext_resource type="Script" uid="uid://b0xawosbd7a3y" path="res://levels/non_deadly_pit.gd" id="3_keei5"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_u4xt3"]
+texture = ExtResource("1_6d8bg")
+0:0/0 = 0
+0:0/0/terrain_set = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, -0.8093643, -2.428093, -1.1690817)
+0:0/0/terrains_peering_bit/right_side = 0
+1:0/0 = 0
+1:0/0/terrain_set = 0
+1:0/0/terrain = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, -0.8093643, -8, -0.9892225)
+1:0/0/terrains_peering_bit/bottom_side = 0
+1:0/0/terrains_peering_bit/top_side = 0
+2:0/0 = 0
+2:0/0/terrain_set = 0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 3.507244, -0.62950516, -8, -0.62950516)
+2:0/0/terrains_peering_bit/left_side = 0
+
+[sub_resource type="TileSet" id="TileSet_keei5"]
+physics_layer_0/collision_layer = 1
+physics_layer_0/collision_mask = 0
+terrain_set_0/mode = 2
+terrain_set_0/terrain_0/name = "Terrain 0"
+terrain_set_0/terrain_0/color = Color(0, 0.35810763, 0.7919662, 1)
+sources/0 = SubResource("TileSetAtlasSource_u4xt3")
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_dmrny"]
+distance = -14.0
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_keei5"]
+normal = Vector2(1, 0)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_ah2my"]
+normal = Vector2(1, 0)
+
+[node name="Level" type="Node2D" unique_id=30942698]
+
+[node name="Ground" type="TileMapLayer" parent="." unique_id=1837972248]
+tile_map_data = PackedByteArray("AAASACAAAAABAAAAAAATACAAAAABAAAAAAAUACAAAAABAAAAAAAVACAAAAABAAAAAAAWACAAAAABAAAAAAARACAAAAAAAAAAAAAXACAAAAACAAAAAAAJACUAAAABAAAAAAAKACUAAAABAAAAAAALACUAAAABAAAAAAAMACUAAAABAAAAAAANACUAAAABAAAAAAAOACUAAAABAAAAAAAPACUAAAABAAAAAAAQACUAAAABAAAAAAARACUAAAABAAAAAAASACUAAAABAAAAAAATACUAAAABAAAAAAAUACUAAAABAAAAAAAVACUAAAABAAAAAAAWACUAAAABAAAAAAAXACUAAAABAAAAAAAYACUAAAABAAAAAAAZACUAAAABAAAAAAAaACUAAAABAAAAAAAbACUAAAABAAAAAAAcACUAAAABAAAAAAAdACUAAAABAAAAAAAeACUAAAABAAAAAAAfACUAAAABAAAAAAAgACUAAAABAAAAAAAhACUAAAABAAAAAAAiACUAAAABAAAAAAAjACUAAAABAAAAAAAkACUAAAABAAAAAAAlACUAAAABAAAAAAAmACUAAAABAAAAAAAnACUAAAABAAAAAAAoACUAAAABAAAAAAApACUAAAABAAAAAAAqACUAAAABAAAAAAArACUAAAABAAAAAAAsACUAAAABAAAAAAAtACUAAAABAAAAAAAuACUAAAABAAAAAAAIACUAAAABAAAAAAAvACUAAAABAAAAAAAeACAAAAABAAAAAAAfACAAAAABAAAAAAAgACAAAAABAAAAAAAhACAAAAABAAAAAAAiACAAAAABAAAAAAAjACAAAAABAAAAAAAkACAAAAABAAAAAAAdACAAAAAAAAAAAAAlACAAAAACAAAAAAAHACUAAAABAAAAAAAGACUAAAABAAAAAAAFACUAAAABAAAAAAAEACUAAAABAAAAAAADACUAAAABAAAAAAACACUAAAABAAAAAAABACUAAAABAAAAAAAAACUAAAAAAAAAAAAwACUAAAABAAAAAAAxACUAAAABAAAAAAAyACUAAAABAAAAAAAzACUAAAABAAAAAAA0ACUAAAABAAAAAAA1ACUAAAABAAAAAAA2ACUAAAABAAAAAAA3ACUAAAABAAAAAAA4ACUAAAABAAAAAAA5ACUAAAABAAAAAAA6ACUAAAABAAAAAAA7ACUAAAABAAAAAAA8ACUAAAABAAAAAAA9ACUAAAABAAAAAAA+ACUAAAABAAAAAAA/ACUAAAABAAAAAABAACUAAAABAAAAAABBACUAAAABAAAAAABCACUAAAABAAAAAABDACUAAAABAAAAAABEACUAAAABAAAAAABFACUAAAABAAAAAABGACUAAAABAAAAAABHACUAAAABAAAAAABIACUAAAABAAAAAABJACUAAAABAAAAAABKACUAAAABAAAAAABLACUAAAABAAAAAABMACUAAAABAAAAAABNACUAAAABAAAAAABOACUAAAABAAAAAABPACUAAAABAAAAAABQACUAAAACAAAAAAA=")
+tile_set = SubResource("TileSet_keei5")
+
+[node name="Player" parent="." unique_id=123481848 instance=ExtResource("2_u4xt3")]
+position = Vector2(317, 470)
+
+[node name="Camera2D" type="Camera2D" parent="Player" unique_id=1134861458]
+zoom = Vector2(2, 2)
+limit_left = 0
+limit_right = 1300
+
+[node name="GroundZone" type="Area2D" parent="." unique_id=33843784]
+position = Vector2(1, 633)
+script = ExtResource("3_keei5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GroundZone" unique_id=555687053]
+shape = SubResource("WorldBoundaryShape2D_dmrny")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=765548957]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1912902789]
+position = Vector2(0, 477)
+shape = SubResource("WorldBoundaryShape2D_keei5")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D" unique_id=320128092]
+position = Vector2(1288, 488)
+rotation = 3.1415927
+shape = SubResource("WorldBoundaryShape2D_ah2my")
