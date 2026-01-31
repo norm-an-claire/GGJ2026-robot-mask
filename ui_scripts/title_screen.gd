@@ -1,0 +1,14 @@
+extends Node
+
+var next_scene_packed: PackedScene = preload("res://levels/demo_level.tscn")
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	if Input.is_anything_pressed():
+		# Change the current scene to the preloaded scene resource
+		get_tree().change_scene_to_packed(next_scene_packed)
