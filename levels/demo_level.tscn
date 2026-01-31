@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://dltd4tixo7vb7" path="res://characters/player.tscn" id="2_u4xt3"]
 [ext_resource type="Script" uid="uid://b0xawosbd7a3y" path="res://levels/non_deadly_pit.gd" id="3_keei5"]
 [ext_resource type="PackedScene" uid="uid://1obqxmhgvig6" path="res://masks/base_mask.tscn" id="4_dmrny"]
+[ext_resource type="PackedScene" uid="uid://ba4r3drtgbxjk" path="res://characters/enemies/base_grounded_enemy.tscn" id="5_ah2my"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_keei5"]
 texture = ExtResource("1_6d8bg")
@@ -34,7 +35,7 @@ normal = Vector2(1, 0)
 tile_map_data = PackedByteArray("AAADABEAAAABAAAAAAAEABEAAAABAAAAAAAFABEAAAABAAAAAAAGABEAAAABAAAAAAAHABEAAAABAAAAAAAIABEAAAABAAAAAAAJABEAAAABAAAAAAAKABEAAAABAAAAAAALABEAAAABAAAAAAAMABEAAAABAAAAAAANABEAAAABAAAAAAAOABEAAAABAAAAAAAPABEAAAABAAAAAAAQABEAAAABAAAAAAARABEAAAABAAAAAAASABEAAAACAAAAAAABABEAAAAAAAAAAAACABEAAAABAAAAAAAJAA8AAAABAAAAAAAKAA8AAAABAAAAAAAIAA8AAAAAAAAAAAALAA8AAAACAAAAAAALAA0AAAACAAAAAAAKAA0AAAAAAAAAAAAGAA0AAAAAAAAAAAAHAA0AAAACAAAAAAA=")
 tile_set = SubResource("TileSet_dmrny")
 
-[node name="Player" parent="." unique_id=123481848 instance=ExtResource("2_u4xt3")]
+[node name="Player" parent="." unique_id=123481848 groups=["player"] instance=ExtResource("2_u4xt3")]
 position = Vector2(317, 470)
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=1134861458]
@@ -61,4 +62,6 @@ shape = SubResource("WorldBoundaryShape2D_ah2my")
 
 [node name="BaseMask" parent="." unique_id=1387103882 instance=ExtResource("4_dmrny")]
 position = Vector2(240, 520)
-collision_mask = 32
+
+[node name="BaseGroundedEnemy" parent="." unique_id=1762067699 instance=ExtResource("5_ah2my")]
+position = Vector2(168, 496)

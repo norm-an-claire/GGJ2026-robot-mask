@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://ba4r3drtgbxjk"]
+
+[ext_resource type="Script" uid="uid://cvqsbl518nad8" path="res://characters/enemies/base_grounded_enemy.gd" id="1_yoke4"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ua1oq"]
+radius = 8.0
+height = 32.0
+
+[node name="BaseGroundedEnemy" type="CharacterBody2D" unique_id=1762067699]
+script = ExtResource("1_yoke4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=179368929]
+shape = SubResource("CapsuleShape2D_ua1oq")
