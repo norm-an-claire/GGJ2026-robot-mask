@@ -74,7 +74,7 @@ func _unhandled_input(event: InputEvent) -> void:
 func _on_mask_pickup(body: Area2D) -> void:
 	if body is Mask:
 		print(self, "picked up a mask!")
-		modulate = mask_color_modulate[ body.mask_color]
+		modulate = mask_color_modulate[ body.mask_color ]
 		SignalBus.player_picked_up_mask.emit( body.mask_color )
 		body.player_picked_me_up()
 

@@ -12,7 +12,6 @@ var target: CharacterBody2D
 
 func _enter_tree() -> void:
 	set_collision_layer_value(enemy_color, true)
-	print(get_collision_layer_value(3))
 	SignalBus.player_picked_up_mask.connect(_alter_target)
 
 # Called when the node enters the scene tree for the first time.
