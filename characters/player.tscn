@@ -4,10 +4,11 @@
 [ext_resource type="Texture2D" uid="uid://bdey6fbj6548x" path="res://assets/player.png" id="1_dnjla"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3eadt"]
-radius = 4.0
-height = 12.0
+radius = 7.0
+height = 26.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3eadt"]
+radius = 17.0
 
 [node name="Player" type="CharacterBody2D" unique_id=123481848]
 script = ExtResource("1_3eadt")
@@ -18,6 +19,7 @@ shape = SubResource("CapsuleShape2D_3eadt")
 [node name="PlayerSprite" type="Sprite2D" parent="." unique_id=614762725]
 modulate = Color(0.44876254, 0.5267094, 0.587451, 1)
 position = Vector2(0, -1)
+scale = Vector2(2, 2)
 texture = ExtResource("1_dnjla")
 
 [node name="MaskPickupRange" type="Area2D" parent="." unique_id=906353176]
@@ -26,5 +28,6 @@ collision_layer = 0
 collision_mask = 32
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MaskPickupRange" unique_id=1956865841]
+position = Vector2(0, -4)
 shape = SubResource("CircleShape2D_3eadt")
 debug_color = Color(0.96146566, 0, 0.4509501, 0)
