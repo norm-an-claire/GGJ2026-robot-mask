@@ -1,6 +1,6 @@
 extends Node
 
-var next_scene_packed: PackedScene = preload("res://levels/demo_level.tscn")
+var next_scene_packed: PackedScene = preload("res://levels/main_menu.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
