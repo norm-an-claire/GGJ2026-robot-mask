@@ -3,7 +3,8 @@ extends Node
 
 enum MaskColors {
 	UNMASKED,
-	BLUEMASK,
+	BLUEMASK=3,
 	REDMASK,
 	YELLOWMASK
 }
+

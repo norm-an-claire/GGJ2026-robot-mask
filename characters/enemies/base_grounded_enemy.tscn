@@ -7,6 +7,8 @@ radius = 8.0
 height = 32.0
 
 [node name="BaseGroundedEnemy" type="CharacterBody2D" unique_id=1762067699]
+collision_layer = 4
+collision_mask = 3
 script = ExtResource("1_yoke4")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=179368929]
