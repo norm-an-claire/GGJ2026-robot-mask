@@ -8,7 +8,7 @@ var mask_color: int = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass
+	mask_color = Globals.MaskColors.BLUEMASK
 	#mask_sprite.texture = mask_textures[ mask_color ]
 
 

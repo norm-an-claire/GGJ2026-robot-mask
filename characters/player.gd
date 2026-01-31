@@ -3,14 +3,14 @@ class_name Player
 
 
 const SPEED = 140.0
-const SPRINTSPEED = 200.0
+const SPRINTSPEED = 240.0
 const JUMP_VELOCITY = -400.0
 const ACCEL = 30.0
 
 @onready var mask_pickup_area: Area2D = %MaskPickupRange
 @onready var animation_player: AnimationPlayer = %AnimationPlayer
 @onready var hitbox: Area2D = %MeleeHitbox
-@onready var invuln_timer: Timer 
+@onready var invuln_timer: Timer = %InvulnTimer
 
 var player_mask: int
 var mask_color_modulate: Dictionary[int, Color] = {
@@ -26,6 +26,9 @@ func _ready() -> void:
 	print(self, " ready!")
 	mask_pickup_area.area_entered.connect(_on_mask_pickup)
 	hitbox.body_entered.connect(damage_enemy)
+	invuln_timer.timeout.connect( func() -> void:
+		_toggle_enemy_collisions( true )
+	)
 	
 
 
@@ -52,6 +55,15 @@ func _physics_process(delta: float) -> void:
 		velocity.x = move_toward(velocity.x, 0, ACCEL)
 	
 	move_and_slide()
+
+	for i in get_slide_collision_count():
+		var collision := get_slide_collision(i)
+		var collider := collision.get_collider()
+		if collider.is_in_group("enemy"):
+			print("hit an enemy")
+			_take_hit()
+			break
+
 
 
 
@@ -85,12 +97,19 @@ func damage_enemy(body: Node2D):
 			print("impacted ", body)
 
 
-func take_hit() -> void:
+func _take_hit() -> void:
+	print("hit taken")
 	hit_points -= 1
+	invuln_timer.start()
+	_toggle_enemy_collisions( false )
 	if hit_points <= 0:
+		print("u ded!")
 		SignalBus.player_died.emit()
 		hit_points = 3
 
 
-# func _toggle_invulnerability(status: bool) -> void:
-# 	for layer in range()
+func _toggle_enemy_collisions(status: bool) -> void:
+	print("toggling invincibility")
+	modulate.a = 1.0 if status else 0.5
+	for layer in range(Globals.MaskColors.BLUEMASK, Globals.MaskColors.YELLOWMASK + 1):
+		set_collision_mask_value( layer, status )

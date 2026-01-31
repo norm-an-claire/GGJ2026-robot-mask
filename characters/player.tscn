@@ -344,7 +344,7 @@ unique_name_in_owner = true
 collision_layer = 0
 collision_mask = 32
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="MaskPickupRange" unique_id=1956865841]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MaskPickupRange" unique_id=1956865841 groups=["player"]]
 position = Vector2(0, -1)
 shape = SubResource("CircleShape2D_3eadt")
 debug_color = Color(0.96146566, 0, 0.4509501, 0)
@@ -365,3 +365,6 @@ disabled = true
 debug_color = Color(1, 0.005520886, 0.08260944, 0.41960785)
 
 [node name="InvulnTimer" type="Timer" parent="." unique_id=122566762]
+unique_name_in_owner = true
+process_callback = 0
+one_shot = true

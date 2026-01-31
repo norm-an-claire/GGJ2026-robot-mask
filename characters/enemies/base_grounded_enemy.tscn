@@ -6,10 +6,18 @@
 radius = 8.0
 height = 32.0
 
-[node name="BaseGroundedEnemy" type="CharacterBody2D" unique_id=1762067699]
+[node name="BaseGroundedEnemy" type="CharacterBody2D" unique_id=1762067699 groups=["enemy"]]
 collision_layer = 4
 collision_mask = 3
 script = ExtResource("1_yoke4")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=179368929]
 shape = SubResource("CapsuleShape2D_ua1oq")
+
+[node name="LeftEdgeDetector" type="RayCast2D" parent="." unique_id=649242390]
+unique_name_in_owner = true
+target_position = Vector2(-32, 24)
+
+[node name="RightEdgeDetector" type="RayCast2D" parent="." unique_id=1834337012]
+unique_name_in_owner = true
+target_position = Vector2(32, 24)

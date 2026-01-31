@@ -7,6 +7,9 @@ const SPEED = 100.0
 var x_direction: int
 var target: CharacterBody2D
 
+@onready var left_edge_detector: RayCast2D = %LeftEdgeDetector
+@onready var right_edge_detector: RayCast2D = %RightEdgeDetector
+
 
 
 
@@ -26,7 +29,12 @@ func _physics_process(delta: float) -> void:
 
 	if target != null:
 		x_direction = 1 if (global_position.x - target.global_position.x < 0.0) else -1
-		self.velocity.x = x_direction * SPEED * delta * 60
+		if x_direction == 1 and right_edge_detector.is_colliding():
+			self.velocity.x = x_direction * SPEED * delta * 60
+		elif x_direction == -1 and left_edge_detector.is_colliding():
+			self.velocity.x = x_direction * SPEED * delta * 60
+		else:
+			velocity.x = move_toward(velocity.x, 0, SPEED)
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 	
