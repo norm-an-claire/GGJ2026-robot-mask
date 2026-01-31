@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://dueihy3e5u1bo"]
+
+[ext_resource type="Texture2D" uid="uid://dn24jwfntd3lw" path="res://assets/title_screen_player.png" id="1_0dgt5"]
+[ext_resource type="Texture2D" uid="uid://bg0x35xbf56f0" path="res://assets/menu_background.png" id="1_1xnr2"]
+[ext_resource type="Texture2D" uid="uid://cw1brl6anxek2" path="res://assets/title_card.png" id="2_1xnr2"]
+[ext_resource type="Script" uid="uid://ef7f84kpsdw2" path="res://ui_scripts/text_fading.gd" id="4_gynrd"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_gynrd"]
+font_color = Color(0, 0, 0, 1)
+
+[node name="TitleScreen" type="Node2D" unique_id=1342509705]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=2007018298]
+
+[node name="Background" type="TextureRect" parent="CanvasLayer" unique_id=55005131]
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 1180.0
+offset_bottom = 680.0
+texture = ExtResource("1_1xnr2")
+expand_mode = 3
+
+[node name="CharacterPortrait" type="Sprite2D" parent="CanvasLayer" unique_id=2124105474]
+position = Vector2(900, 400)
+texture = ExtResource("1_0dgt5")
+
+[node name="TitleCard" type="Sprite2D" parent="CanvasLayer" unique_id=622564707]
+position = Vector2(300, 150)
+texture = ExtResource("2_1xnr2")
+
+[node name="StartMessage" type="Label" parent="CanvasLayer" unique_id=1203596391]
+offset_left = 167.0
+offset_top = 564.0
+offset_right = 438.0
+offset_bottom = 600.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 26
+text = "Press Any Button..."
+label_settings = SubResource("LabelSettings_gynrd")
+uppercase = true
+script = ExtResource("4_gynrd")
