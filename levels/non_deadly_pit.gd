@@ -10,4 +10,4 @@ func _ready() -> void:
 
 
 func tp_to_top(body: Node2D) -> void:
-	body.global_position.y -= 900
+	body.global_position.y =0
