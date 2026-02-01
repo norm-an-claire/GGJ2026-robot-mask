@@ -120,7 +120,7 @@ position = Vector2(-6.1333923, 19.166626)
 shape = SubResource("RectangleShape2D_nwbki")
 script = ExtResource("3_6flho")
 
-[node name="Player" parent="." unique_id=123481848 groups=["player"] instance=ExtResource("2_nwbki")]
+[node name="Player" parent="." unique_id=123481848 instance=ExtResource("2_nwbki")]
 position = Vector2(529, 463)
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=1134861458]
