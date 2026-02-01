@@ -69,5 +69,5 @@ func _activate_zone() -> void:
 			# Placeholder - do nothing
 			pass
 		"Play":
-			var next_level = load("res://levels/demo_level.tscn")
+			var next_level = load("res://levels/level_2.tscn")
 			get_tree().change_scene_to_packed(next_level)
