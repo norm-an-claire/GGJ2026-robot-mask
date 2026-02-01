@@ -11,6 +11,10 @@ const ACCEL = 30.0
 @onready var animation_player: AnimationPlayer = %AnimationPlayer
 @onready var hitbox: Area2D = %MeleeHitbox
 @onready var invuln_timer: Timer = %InvulnTimer
+@onready var sprite: AnimatedSprite2D = %AnimatedSprite2D
+
+
+var knockback_impulse: float
 
 var player_mask: int
 var mask_color_modulate: Dictionary[int, Color] = {
@@ -20,6 +24,7 @@ var mask_color_modulate: Dictionary[int, Color] = {
 	Globals.MaskColors.YELLOWMASK: Color.YELLOW
 }
 var hit_points: int = 3
+var attacking: bool = false
 
 
 func _ready() -> void:
@@ -29,6 +34,16 @@ func _ready() -> void:
 	invuln_timer.timeout.connect( func() -> void:
 		_toggle_enemy_collisions( true )
 	)
+	animation_player.animation_finished.connect( func(anim_name: StringName) -> void:
+		match anim_name:
+			"attack":
+				attacking = false
+	)
+	
+func _process(_delta: float) -> void:
+	if animation_player.current_animation == "attack":
+		if animation_player.current_animation_position >= animation_player.current_animation_length:
+			animation_player.animation_finished.emit(animation_player.current_animation)
 	
 
 
@@ -41,8 +56,10 @@ func _physics_process(delta: float) -> void:
 	
 	var direction := Input.get_axis("move_left", "move_right")
 	
-	if direction:
-		animation_player.queue("run")
+	if direction and is_zero_approx(knockback_impulse):
+		if not attacking:
+			animation_player.play("run")
+			
 		velocity.x += direction * ACCEL
 		
 		if Input.is_action_pressed("sprint"):
@@ -52,7 +69,12 @@ func _physics_process(delta: float) -> void:
 	else:
 		if animation_player.current_animation == "run":
 			animation_player.stop()
-		velocity.x = move_toward(velocity.x, 0, ACCEL)
+		if is_zero_approx(knockback_impulse):
+			velocity.x = move_toward(velocity.x, 0, ACCEL)
+		else:
+			velocity.x = knockback_impulse * delta * 60
+			velocity.y = -abs(knockback_impulse) * delta * 60 * .7
+			knockback_impulse = move_toward(knockback_impulse, 0, ACCEL)
 	
 	move_and_slide()
 
@@ -60,6 +82,7 @@ func _physics_process(delta: float) -> void:
 		var collision := get_slide_collision(i)
 		var collider := collision.get_collider()
 		if collider.is_in_group("enemy"):
+			knockback_impulse = sign(global_position.x - collision.get_position().x) * 400
 			print("hit an enemy")
 			_take_hit()
 			break
@@ -69,18 +92,18 @@ func _physics_process(delta: float) -> void:
 
 
 func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_pressed("move_left"):
-		animation_player.play("turn_left")
-	elif event.is_action_pressed("move_right"):
-		animation_player.play("turn_right")
+	if not attacking:
+		if Input.is_action_pressed("move_left"):
+			sprite.flip_h = true
+			hitbox.get_child(0).position.x = -17
+		elif Input.is_action_pressed("move_right"):
+			sprite.flip_h = false
+			hitbox.get_child(0).position.x = 17
 	
 
-	if event.is_action_pressed("melee"):
+	if event.is_action_pressed("melee") and not attacking:
 		animation_player.play("attack")
-		velocity.x = move_toward(velocity.x, 0, ACCEL * 2)
-	
-	if event.is_action_released("melee"):
-		animation_player.play("interrupt_melee")
+		attacking = true
 
 
 func _on_mask_pickup(body: Area2D) -> void:
@@ -95,6 +118,9 @@ func damage_enemy(body: Node2D):
 	if body is CharacterBody2D and body is not Player:
 		if body.get_collision_layer_value(Globals.MaskColors.BLUEMASK):
 			print("impacted ", body)
+			if body.has_method("take_knockback"):
+				print(sign(body.global_position.x - global_position.x))
+				body.take_knockback( sign(body.global_position.x - global_position.x) )
 
 
 func _take_hit() -> void:
@@ -113,3 +139,4 @@ func _toggle_enemy_collisions(status: bool) -> void:
 	modulate.a = 1.0 if status else 0.5
 	for layer in range(Globals.MaskColors.BLUEMASK, Globals.MaskColors.YELLOWMASK + 1):
 		set_collision_mask_value( layer, status )
+
