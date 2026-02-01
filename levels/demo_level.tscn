@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://b0xawosbd7a3y" path="res://levels/non_deadly_pit.gd" id="3_keei5"]
 [ext_resource type="PackedScene" uid="uid://1obqxmhgvig6" path="res://masks/base_mask.tscn" id="4_dmrny"]
 [ext_resource type="PackedScene" uid="uid://ba4r3drtgbxjk" path="res://characters/enemies/base_grounded_enemy.tscn" id="5_ah2my"]
+[ext_resource type="PackedScene" uid="uid://qkrwdsc0bfqm" path="res://canvas_scenes/main_ui.tscn" id="6_jo783"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jo783"]
 texture = ExtResource("1_ah2my")
@@ -94,3 +95,5 @@ position = Vector2(864, 464)
 
 [node name="BaseGroundedEnemy3" parent="." unique_id=507887054 instance=ExtResource("5_ah2my")]
 position = Vector2(1384, 424)
+
+[node name="HUD" parent="." unique_id=1992723618 instance=ExtResource("6_jo783")]

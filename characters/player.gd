@@ -26,7 +26,6 @@ var mask_color_modulate: Dictionary[int, Color] = {
 var hit_points: int = 3
 var attacking: bool = false
 
-
 func _ready() -> void:
 	print(self, " ready!")
 	mask_pickup_area.area_entered.connect(_on_mask_pickup)
@@ -126,6 +125,7 @@ func damage_enemy(body: Node2D):
 func _take_hit() -> void:
 	print("hit taken")
 	hit_points -= 1
+	SignalBus.player_damaged.emit(hit_points)
 	invuln_timer.start()
 	_toggle_enemy_collisions( false )
 	if hit_points <= 0:
