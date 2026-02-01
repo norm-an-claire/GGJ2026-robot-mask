@@ -1,0 +1,105 @@
+[gd_scene format=3 uid="uid://rf81ws8r81sj"]
+
+[ext_resource type="Texture2D" uid="uid://bjepscwfosgj2" path="res://assets/redmaskiconspritesheet.png" id="1_65mcl"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l6jg0"]
+atlas = ExtResource("1_65mcl")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lb18a"]
+atlas = ExtResource("1_65mcl")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ecbyb"]
+atlas = ExtResource("1_65mcl")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a6ays"]
+atlas = ExtResource("1_65mcl")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4ufcp"]
+atlas = ExtResource("1_65mcl")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_phusx"]
+atlas = ExtResource("1_65mcl")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i30qc"]
+atlas = ExtResource("1_65mcl")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wy42a"]
+atlas = ExtResource("1_65mcl")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t5fng"]
+atlas = ExtResource("1_65mcl")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wjpsi"]
+atlas = ExtResource("1_65mcl")
+region = Rect2(256, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6udmo"]
+atlas = ExtResource("1_65mcl")
+region = Rect2(288, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qt0jj"]
+atlas = ExtResource("1_65mcl")
+region = Rect2(320, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_naagg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l6jg0")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lb18a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ecbyb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a6ays")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4ufcp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_phusx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i30qc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wy42a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t5fng")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wjpsi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6udmo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qt0jj")
+}],
+"loop": true,
+"name": &"pickup",
+"speed": 5.0
+}]
+
+[node name="Node2D" type="AnimatedSprite2D" unique_id=495780690]
+sprite_frames = SubResource("SpriteFrames_naagg")
+animation = &"pickup"
+frame_progress = 0.39629075

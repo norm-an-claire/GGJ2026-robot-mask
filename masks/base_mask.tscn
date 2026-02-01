@@ -2,6 +2,8 @@
 
 [ext_resource type="Script" uid="uid://c5ak6csptsdj5" path="res://masks/base_mask.gd" id="1_gsj04"]
 [ext_resource type="PackedScene" uid="uid://drdjl7o50udau" path="res://masks/blue_mask_animated_sprite.tscn" id="2_3oucm"]
+[ext_resource type="PackedScene" uid="uid://rf81ws8r81sj" path="res://masks/red_mask_animated_sprite.tscn" id="3_rwohg"]
+[ext_resource type="PackedScene" uid="uid://c6klicf3l5xo8" path="res://masks/green_mask_animated_sprite.tscn" id="4_cegal"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8dp0l"]
 
@@ -9,9 +11,16 @@
 collision_layer = 32
 collision_mask = 0
 script = ExtResource("1_gsj04")
-mask_textures = [NodePath("BlueMaskSprite"), null, null]
+mask_textures = [NodePath("BlueMaskSprite"), NodePath("RedMaskSprite"), NodePath("GreenMaskSprite")]
 
 [node name="BlueMaskSprite" parent="." unique_id=744688851 instance=ExtResource("2_3oucm")]
+visible = false
+
+[node name="RedMaskSprite" parent="." unique_id=495780690 instance=ExtResource("3_rwohg")]
+visible = false
+
+[node name="GreenMaskSprite" parent="." unique_id=115583997 instance=ExtResource("4_cegal")]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1815133095]
 shape = SubResource("RectangleShape2D_8dp0l")

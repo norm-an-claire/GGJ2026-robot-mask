@@ -453,3 +453,7 @@ debug_color = Color(1, 0.005520886, 0.08260944, 0.41960785)
 unique_name_in_owner = true
 process_callback = 0
 one_shot = true
+
+[node name="MaskPosition" type="Marker2D" parent="." unique_id=177596360]
+unique_name_in_owner = true
+position = Vector2(0, -8)

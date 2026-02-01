@@ -20,6 +20,6 @@ func _spawn_enemy() -> void:
 	if randi_range(0, 1) == 1:
 		var enemy: CharacterBody2D = enemy_scene.instantiate()
 		enemy.global_position = global_position
-		enemy.enemy_color = [Globals.MaskColors.BLUEMASK, Globals.MaskColors.REDMASK, Globals.MaskColors.YELLOWMASK].pick_random()
+		enemy.enemy_color = [Globals.MaskColors.BLUEMASK, Globals.MaskColors.REDMASK, Globals.MaskColors.GREENMASK].pick_random()
 		enemy.add_to_group("enemy")
 		get_tree().get_first_node_in_group("level").add_child(enemy)

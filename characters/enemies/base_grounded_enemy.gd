@@ -6,7 +6,7 @@ extends CharacterBody2D
 var mask_color_modulate: Dictionary[int, Color] = {
 	Globals.MaskColors.BLUEMASK: Color.BLUE,
 	Globals.MaskColors.REDMASK: Color.RED,
-	Globals.MaskColors.YELLOWMASK: Color.YELLOW
+	Globals.MaskColors.GREENMASK: Color.YELLOW
 }
 
 
@@ -25,7 +25,7 @@ var hit_points: int = 2
 
 
 func _enter_tree() -> void:
-	#for i in range(Globals.MaskColors.BLUEMASK, Globals.MaskColors.YELLOWMASK + 1):
+	#for i in range(Globals.MaskColors.BLUEMASK, Globals.MaskColors.GREENMASK + 1):
 	#	set_collision_layer_value(enemy_color, false)	
 	set_collision_layer_value(enemy_color, true)
 	SignalBus.player_picked_up_mask.connect(_alter_target)

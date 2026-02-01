@@ -39,6 +39,7 @@ uv = PackedVector2Array(-45.33374, 39.33368, -25.33374, 42.000366, -32.000366, -
 [node name="HitParticles" type="GPUParticles2D" parent="." unique_id=1960713625]
 unique_name_in_owner = true
 emitting = false
+amount = 16
 lifetime = 0.5
 one_shot = true
 explosiveness = 1.0
