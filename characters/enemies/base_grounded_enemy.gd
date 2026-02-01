@@ -15,6 +15,7 @@ const FRICTION = 30.0
 var x_direction: int
 var target: CharacterBody2D
 var knockback_impulse: float
+var hit_points: int = 2
 
 @onready var left_edge_detector: RayCast2D = %LeftEdgeDetector
 @onready var right_edge_detector: RayCast2D = %RightEdgeDetector
@@ -68,3 +69,11 @@ func _alter_target(player_color: int) -> void:
 
 func take_knockback(direction_sign: int) -> void:
 	knockback_impulse = 300 * direction_sign
+	hit_points -= 1
+	if hit_points <= 0:
+		_die()
+
+
+func _die() -> void:
+	get_parent().remove_child(self)
+	queue_free()
