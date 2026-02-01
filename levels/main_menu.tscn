@@ -72,40 +72,50 @@ position = Vector2(94.18, -1)
 tile_map_data = PackedByteArray("AAAGABIAAAAAAAEAAAAFABIAAAABAAAAAAAEABIAAAABAAAAAAADABIAAAABAAEAAAAHABAAAAABAAEAAAAIABAAAAABAAAAAAAJABAAAAABAAAAAAAKABAAAAAAAAEAAAADAA4AAAABAAEAAAAEAA4AAAACAAAAAAAFAA4AAAACAAAAAAAGAA4AAAAAAAEAAAAMAA8AAAABAAEAAAANAA8AAAABAAAAAAAOAA8AAAAAAAEAAAAPABMAAAABAAEAAAAQABMAAAACAAAAAAARABMAAAACAAAAAAASABMAAAAAAAEAAAAUAAwAAAABAAEAAAAVAAwAAAACAAAAAAAWAAwAAAACAAAAAAAXAAwAAAAAAAEAAAD//wwAAAABAAEAAAAAAAwAAAACAAAAAAABAAwAAAACAAAAAAACAAwAAAAAAAEAAAASAA8AAAABAAEAAAATAA8AAAACAAAAAAAUAA8AAAACAAAAAAAVAA8AAAAAAAEAAAD9/xMAAAABAAEAAAD+/xMAAAACAAAAAAD//xMAAAACAAAAAAAAABMAAAAAAAEAAAA=")
 tile_set = SubResource("TileSet_pjwgr")
 
-[node name="PlayLabel" type="Sprite2D" parent="Ground" unique_id=349871817]
+[node name="PlayLabelGroup" type="Node2D" parent="Ground" unique_id=1767438862]
+
+[node name="PlayLabel" type="Sprite2D" parent="Ground/PlayLabelGroup" unique_id=349871817]
 position = Vector2(291, 494)
-scale = Vector2(0.6, 0.6)
+scale = Vector2(0.15, 0.15)
 texture = ExtResource("2_7rktv")
 
-[node name="PlayZone_Area2D" type="Area2D" parent="Ground/PlayLabel" unique_id=781423188]
+[node name="PlayZone_Area2D" type="Area2D" parent="Ground/PlayLabelGroup" unique_id=781423188]
+position = Vector2(291, 494)
+scale = Vector2(0.6, 0.6)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground/PlayLabel/PlayZone_Area2D" unique_id=378920771]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground/PlayLabelGroup/PlayZone_Area2D" unique_id=378920771]
 position = Vector2(-6.1333923, 19.166626)
 shape = SubResource("RectangleShape2D_nwbki")
 script = ExtResource("3_6flho")
 
-[node name="OptionsLabel" type="Sprite2D" parent="Ground" unique_id=777345793]
+[node name="OptionsLabelGroup" type="Node2D" parent="Ground" unique_id=1982501007]
+
+[node name="OptionsLabel" type="Sprite2D" parent="Ground/OptionsLabelGroup" unique_id=777345793]
 position = Vector2(160, 430.99997)
-scale = Vector2(0.6, 0.6)
+scale = Vector2(0.15, 0.15)
 texture = ExtResource("3_nwbki")
 
-[node name="OptionsZone_Area2D" type="Area2D" parent="Ground/OptionsLabel" unique_id=802221561]
-position = Vector2(5.0000305, -3.333313)
+[node name="OptionsZone_Area2D" type="Area2D" parent="Ground/OptionsLabelGroup" unique_id=802221561]
+position = Vector2(163.00003, 428.99997)
+scale = Vector2(0.6, 0.6)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground/OptionsLabel/OptionsZone_Area2D" unique_id=113623068]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground/OptionsLabelGroup/OptionsZone_Area2D" unique_id=113623068]
 position = Vector2(-6.1333923, 19.166626)
 shape = SubResource("RectangleShape2D_nwbki")
 script = ExtResource("3_6flho")
 
-[node name="ExitLabel" type="Sprite2D" parent="Ground" unique_id=640231851]
+[node name="ExitLabelGroup" type="Node2D" parent="Ground" unique_id=204891484]
+
+[node name="ExitLabel" type="Sprite2D" parent="Ground/ExitLabelGroup" unique_id=640231851]
 position = Vector2(160, 559)
-scale = Vector2(0.6, 0.6)
+scale = Vector2(0.15, 0.15)
 texture = ExtResource("4_pppj1")
 
-[node name="PlayZone_Area2D3" type="Area2D" parent="Ground/ExitLabel" unique_id=545311431]
-position = Vector2(4.699997, -3.3333359)
+[node name="PlayZone_Area2D3" type="Area2D" parent="Ground/ExitLabelGroup" unique_id=545311431]
+position = Vector2(162.82, 557)
+scale = Vector2(0.6, 0.6)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground/ExitLabel/PlayZone_Area2D3" unique_id=2021700182]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground/ExitLabelGroup/PlayZone_Area2D3" unique_id=2021700182]
 position = Vector2(-6.1333923, 19.166626)
 shape = SubResource("RectangleShape2D_nwbki")
 script = ExtResource("3_6flho")
