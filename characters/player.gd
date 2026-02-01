@@ -2,6 +2,9 @@ extends CharacterBody2D
 class_name Player
 
 
+@export_file("*.tscn") var game_over_screen: String
+
+
 const SPEED = 140.0
 const SPRINTSPEED = 240.0
 const HIGH_JUMP_VELOCITY = -400.0
@@ -32,7 +35,6 @@ var hit_points: int = 3
 var attacking: bool = false
 
 func _ready() -> void:
-	print(self, " ready!")
 	mask_pickup_area.area_entered.connect(_on_mask_pickup)
 	hitbox.body_entered.connect(damage_enemy)
 	invuln_timer.timeout.connect( func() -> void:
@@ -94,7 +96,6 @@ func _physics_process(delta: float) -> void:
 			if not collider is FlyingEnemy and collider.enemy_color == player_mask:
 				return
 			knockback_impulse = sign(global_position.x - collision.get_position().x) * 400
-			print("hit an enemy")
 			_take_hit()
 			break
 
@@ -119,7 +120,6 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func _on_mask_pickup(body: Area2D) -> void:
 	if body is Mask:
-		print(self, "picked up a mask!")
 		modulate = mask_color_modulate[ body.mask_color ]
 		SignalBus.player_picked_up_mask.emit( body.mask_color )
 
@@ -146,13 +146,11 @@ func _on_mask_pickup(body: Area2D) -> void:
 func damage_enemy(body: Node2D):
 	if body is CharacterBody2D and body is not Player:
 		#if body.get_collision_layer_value(Globals.MaskColors.BLUEMASK):
-		print("impacted ", body)
 		if body.has_method("take_knockback"):
 			body.take_knockback( sign(body.global_position.x - global_position.x) )
 
 
 func _take_hit() -> void:
-	print("hit taken")
 	hit_points -= 1
 	SignalBus.player_damaged.emit(hit_points)
 	invuln_timer.start()
@@ -160,11 +158,11 @@ func _take_hit() -> void:
 	if hit_points <= 0:
 		print("u ded!")
 		SignalBus.player_died.emit()
+		get_tree().change_scene_to_file(game_over_screen)
 		hit_points = 3
 
 
 func _toggle_enemy_collisions(status: bool) -> void:
-	print("toggling invincibility")
 	modulate.a = 1.0 if status else 0.5
 	for layer in range(Globals.MaskColors.BLUEMASK, Globals.MaskColors.GREENMASK + 1):
 		set_collision_mask_value( layer, status )

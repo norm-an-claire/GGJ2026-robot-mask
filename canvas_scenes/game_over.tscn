@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://be1yhftawq0iu"]
+
+[ext_resource type="Script" uid="uid://bwyup4y6kcrmb" path="res://canvas_scenes/game_over.gd" id="1_co7av"]
+[ext_resource type="Texture2D" uid="uid://80ygp0mjy4ne" path="res://assets/spcdeath.png" id="2_dx0bv"]
+
+[node name="GameOver" type="Node2D" unique_id=890386451]
+script = ExtResource("1_co7av")
+main_menu = "uid://d25hfygwgnkyp"
+
+[node name="Spcdeath" type="Sprite2D" parent="." unique_id=22641840]
+position = Vector2(569, 309)
+texture = ExtResource("2_dx0bv")

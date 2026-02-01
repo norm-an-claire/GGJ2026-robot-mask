@@ -1,19 +1,64 @@
 [gd_scene format=3 uid="uid://cxmpdjjklg3t0"]
 
-[ext_resource type="Texture2D" uid="uid://d37yprs4jg7m6" path="res://assets/FlyingEnemy.png" id="1_5b8vu"]
 [ext_resource type="Script" uid="uid://d1uustdqsnj4h" path="res://characters/enemies/flying_enemy.gd" id="1_v6o2r"]
+[ext_resource type="Texture2D" uid="uid://ddrq1wpyodxme" path="res://assets/FlyingEnemy-Sheet.png" id="2_v6o2r"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ixkiu"]
+atlas = ExtResource("2_v6o2r")
+region = Rect2(0, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_26c4s"]
+atlas = ExtResource("2_v6o2r")
+region = Rect2(64, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y3t4b"]
+atlas = ExtResource("2_v6o2r")
+region = Rect2(128, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7xr3g"]
+atlas = ExtResource("2_v6o2r")
+region = Rect2(128, 0, 64, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lt762"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ixkiu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_26c4s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y3t4b")
+}],
+"loop": true,
+"name": &"chase",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7xr3g")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_v6o2r"]
-radius = 14.0
-height = 62.0
+radius = 7.0
+height = 31.0
 
 [node name="FlyingEnemy" type="CharacterBody2D" unique_id=1920783800 groups=["enemy"]]
 collision_layer = 28
 collision_mask = 3
 script = ExtResource("1_v6o2r")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1100032582]
-texture = ExtResource("1_5b8vu")
+[node name="Sprite2D" type="AnimatedSprite2D" parent="." unique_id=469086964]
+unique_name_in_owner = true
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_lt762")
+animation = &"chase"
+frame_progress = 0.05263006
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2138278937]
 rotation = 1.5707964

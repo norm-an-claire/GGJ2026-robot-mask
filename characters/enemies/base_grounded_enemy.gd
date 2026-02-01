@@ -31,7 +31,7 @@ func _enter_tree() -> void:
 	#	set_collision_layer_value(enemy_color, false)	
 	set_collision_layer_value(enemy_color, true)
 	SignalBus.player_picked_up_mask.connect(_alter_target)
-	modulate = mask_color_modulate[ enemy_color ]
+	#modulate = mask_color_modulate[ enemy_color ]
 	animated_sprite = animated_sprite_array[enemy_color - 3]
 	animated_sprite.visible = true
 	
