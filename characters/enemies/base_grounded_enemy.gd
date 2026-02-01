@@ -36,6 +36,8 @@ func _enter_tree() -> void:
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	target = get_tree().get_first_node_in_group("player")
+	if target.player_mask == enemy_color:
+		target = null
 	hit_particles.modulate = mask_color_modulate[ enemy_color ]
 	print(self, "\n\tcollision layer for ", enemy_color, " is ", get_collision_layer_value(enemy_color))
 

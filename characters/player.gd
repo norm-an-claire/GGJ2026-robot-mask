@@ -62,6 +62,7 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_pressed("jump") and is_on_floor():
 		velocity.y = HIGH_JUMP_VELOCITY
 	
+	
 	var direction := Input.get_axis("move_left", "move_right")
 	
 	if direction and is_zero_approx(knockback_impulse):

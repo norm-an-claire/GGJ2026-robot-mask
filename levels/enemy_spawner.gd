@@ -6,14 +6,13 @@ var spawn_timer: Timer
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass
-	#spawn_timer = Timer.new()
+	spawn_timer = Timer.new()
 
-	#spawn_timer.autostart = true
-	#spawn_timer.wait_time = spawn_time
-	#spawn_timer.timeout.connect(_spawn_enemy)
+	spawn_timer.autostart = true
+	spawn_timer.wait_time = spawn_time
+	spawn_timer.timeout.connect(_spawn_enemy)
 	
-	#add_child(spawn_timer)
+	add_child(spawn_timer)
 
 
 func _spawn_enemy() -> void:

@@ -63,7 +63,7 @@ scroll_scale = Vector2(0.5, 0.5)
 repeat_size = Vector2(1100, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="Node2D/Parallax2D" unique_id=93006042]
-position = Vector2(576, 324)
+position = Vector2(576, 224)
 texture = ExtResource("1_ilhis")
 
 [node name="Player" parent="." unique_id=123481848 instance=ExtResource("1_v5uil")]
