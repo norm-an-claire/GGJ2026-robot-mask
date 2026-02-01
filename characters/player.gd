@@ -50,7 +50,7 @@ func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 
-	if Input.is_action_just_pressed("jump") and is_on_floor():
+	if Input.is_action_pressed("jump") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
 	
 	var direction := Input.get_axis("move_left", "move_right")
@@ -110,7 +110,15 @@ func _on_mask_pickup(body: Area2D) -> void:
 		print(self, "picked up a mask!")
 		modulate = mask_color_modulate[ body.mask_color ]
 		SignalBus.player_picked_up_mask.emit( body.mask_color )
+
 		player_mask = body.mask_color
+		# reset collision layers in case this is a new mask
+		set_collision_mask_value( Globals.MaskColors.BLUEMASK, true)
+		set_collision_mask_value( Globals.MaskColors.REDMASK, true)
+		set_collision_mask_value( Globals.MaskColors.YELLOWMASK, true)
+
+		# disable collision on the mask type that we just picked up
+		set_collision_mask_value( player_mask, false )
 		body.player_picked_me_up()
 
 
@@ -119,7 +127,6 @@ func damage_enemy(body: Node2D):
 		#if body.get_collision_layer_value(Globals.MaskColors.BLUEMASK):
 		print("impacted ", body)
 		if body.has_method("take_knockback"):
-			print(sign(body.global_position.x - global_position.x))
 			body.take_knockback( sign(body.global_position.x - global_position.x) )
 
 

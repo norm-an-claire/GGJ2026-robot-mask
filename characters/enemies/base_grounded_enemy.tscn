@@ -6,8 +6,14 @@
 radius = 8.0
 height = 32.0
 
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_yoke4"]
+particle_flag_disable_z = true
+radial_velocity_min = -320.57
+radial_velocity_max = 383.92996
+gravity = Vector3(0, 98, 0)
+
 [node name="BaseGroundedEnemy" type="CharacterBody2D" unique_id=1762067699 node_paths=PackedStringArray("visual") groups=["enemy"]]
-collision_layer = 4
+collision_layer = 0
 collision_mask = 3
 script = ExtResource("1_yoke4")
 visual = NodePath("Polygon2D")
@@ -29,3 +35,11 @@ scale = Vector2(0.6932457, 0.56909794)
 offset = Vector2(37.50474, -12.300168)
 polygon = PackedVector2Array(-48, 40, -48, 40, -24.460724, 40.170208, -27.620697, -16.358212, -49.0383, -15.655998)
 uv = PackedVector2Array(-45.33374, 39.33368, -25.33374, 42.000366, -32.000366, -12.666321, -48.000366, -16.66632)
+
+[node name="HitParticles" type="GPUParticles2D" parent="." unique_id=1960713625]
+unique_name_in_owner = true
+emitting = false
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_yoke4")

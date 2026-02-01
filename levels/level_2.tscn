@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://dltd4tixo7vb7" path="res://characters/player.tscn" id="1_v5uil"]
 [ext_resource type="PackedScene" uid="uid://1obqxmhgvig6" path="res://masks/base_mask.tscn" id="3_5722l"]
 [ext_resource type="Script" uid="uid://c2a600il3ql0f" path="res://levels/enemy_spawner.gd" id="4_v5uil"]
+[ext_resource type="PackedScene" uid="uid://ba4r3drtgbxjk" path="res://characters/enemies/base_grounded_enemy.tscn" id="5_5722l"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_pqqg8"]
 texture = ExtResource("1_mi4ay")
@@ -66,7 +67,15 @@ tile_map_data = PackedByteArray("AAAUABkAAAABAAAAAAATABkAAAABAAAAAAASABkAAAABAAA
 tile_set = SubResource("TileSet_0srwa")
 
 [node name="BaseMask" parent="." unique_id=1719042748 node_paths=PackedStringArray("mask_textures") instance=ExtResource("3_5722l")]
-position = Vector2(548, 338)
+position = Vector2(559, 338)
+mask_textures = [NodePath("BlueMaskSprite"), null, null]
+
+[node name="BaseMask2" parent="." unique_id=847881754 node_paths=PackedStringArray("mask_textures") instance=ExtResource("3_5722l")]
+position = Vector2(971, 370)
+mask_textures = [NodePath("BlueMaskSprite"), null, null]
+
+[node name="BaseMask3" parent="." unique_id=163956439 node_paths=PackedStringArray("mask_textures") instance=ExtResource("3_5722l")]
+position = Vector2(704, 307)
 mask_textures = [NodePath("BlueMaskSprite"), null, null]
 
 [node name="Marker2D" type="Marker2D" parent="." unique_id=543102427]
@@ -112,3 +121,15 @@ script = ExtResource("4_v5uil")
 [node name="Marker2D11" type="Marker2D" parent="." unique_id=25946079]
 position = Vector2(1097, -14)
 script = ExtResource("4_v5uil")
+
+[node name="BaseGroundedEnemy" parent="." unique_id=1762067699 instance=ExtResource("5_5722l")]
+position = Vector2(502, 354)
+enemy_color = 3
+
+[node name="BaseGroundedEnemy2" parent="." unique_id=1578189450 instance=ExtResource("5_5722l")]
+position = Vector2(53, 387)
+enemy_color = 4
+
+[node name="BaseGroundedEnemy3" parent="." unique_id=500479904 instance=ExtResource("5_5722l")]
+position = Vector2(753, 338)
+enemy_color = 5
