@@ -407,7 +407,7 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3eadt"]
-size = Vector2(20, 12)
+size = Vector2(26, 20)
 
 [node name="Player" type="CharacterBody2D" unique_id=123481848 groups=["player"]]
 collision_mask = 29
@@ -444,7 +444,7 @@ collision_layer = 2
 collision_mask = 28
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MeleeHitbox" unique_id=99738313]
-position = Vector2(17, 1)
+position = Vector2(12, -5)
 shape = SubResource("RectangleShape2D_3eadt")
 disabled = true
 debug_color = Color(1, 0.005520886, 0.08260944, 0.41960785)

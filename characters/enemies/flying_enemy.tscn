@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://cxmpdjjklg3t0"]
+
+[ext_resource type="Texture2D" uid="uid://d37yprs4jg7m6" path="res://assets/FlyingEnemy.png" id="1_5b8vu"]
+[ext_resource type="Script" uid="uid://d1uustdqsnj4h" path="res://characters/enemies/flying_enemy.gd" id="1_v6o2r"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_v6o2r"]
+radius = 14.0
+height = 62.0
+
+[node name="FlyingEnemy" type="CharacterBody2D" unique_id=1920783800 groups=["enemy"]]
+collision_layer = 28
+collision_mask = 3
+script = ExtResource("1_v6o2r")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1100032582]
+texture = ExtResource("1_5b8vu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2138278937]
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_v6o2r")

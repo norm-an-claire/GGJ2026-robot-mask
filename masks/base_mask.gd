@@ -1,7 +1,7 @@
 extends Area2D
 class_name Mask
 
-var mask_color: int = 0
+var mask_color: int = -1
 
 @export var mask_textures: Array[AnimatedSprite2D]
 
@@ -19,7 +19,8 @@ func _ready() -> void:
 	print(mask_textures)
 	
 	# TODO - take this out, replace with assignment
-	mask_color = [Globals.MaskColors.BLUEMASK, Globals.MaskColors.REDMASK, Globals.MaskColors.GREENMASK].pick_random()
+	if mask_color == -1:
+		mask_color = [Globals.MaskColors.BLUEMASK, Globals.MaskColors.REDMASK, Globals.MaskColors.GREENMASK].pick_random()
 	#modulate = mask_color_modulate[ mask_color ]
 	
 	animated_sprite = mask_textures[mask_color - 3]

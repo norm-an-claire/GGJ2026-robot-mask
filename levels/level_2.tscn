@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://c2a600il3ql0f" path="res://levels/enemy_spawner.gd" id="4_v5uil"]
 [ext_resource type="PackedScene" uid="uid://ba4r3drtgbxjk" path="res://characters/enemies/base_grounded_enemy.tscn" id="5_5722l"]
 [ext_resource type="PackedScene" uid="uid://qkrwdsc0bfqm" path="res://canvas_scenes/main_ui.tscn" id="6_ilhis"]
+[ext_resource type="PackedScene" uid="uid://cxmpdjjklg3t0" path="res://characters/enemies/flying_enemy.tscn" id="7_at1ld"]
 [ext_resource type="AudioStream" uid="uid://bhf18six5e7uy" path="res://assets/sounds_and_music/mainbattle.ogg" id="7_ep78u"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_pqqg8"]
@@ -92,46 +93,57 @@ position = Vector2(704, 307)
 [node name="Marker2D" type="Marker2D" parent="." unique_id=543102427]
 position = Vector2(53, -14)
 script = ExtResource("4_v5uil")
+spawn_time = null
 
 [node name="Marker2D2" type="Marker2D" parent="." unique_id=1708476914]
 position = Vector2(323, -14)
 script = ExtResource("4_v5uil")
+spawn_time = null
 
 [node name="Marker2D3" type="Marker2D" parent="." unique_id=434880040]
 position = Vector2(180, -14)
 script = ExtResource("4_v5uil")
+spawn_time = null
 
 [node name="Marker2D4" type="Marker2D" parent="." unique_id=192838835]
 position = Vector2(428, -14)
 script = ExtResource("4_v5uil")
+spawn_time = null
 
 [node name="Marker2D5" type="Marker2D" parent="." unique_id=971536142]
 position = Vector2(542, -14)
 script = ExtResource("4_v5uil")
+spawn_time = null
 
 [node name="Marker2D6" type="Marker2D" parent="." unique_id=382526908]
 position = Vector2(651, -14)
 script = ExtResource("4_v5uil")
+spawn_time = null
 
 [node name="Marker2D7" type="Marker2D" parent="." unique_id=1581820416]
 position = Vector2(753, -14)
 script = ExtResource("4_v5uil")
+spawn_time = null
 
 [node name="Marker2D8" type="Marker2D" parent="." unique_id=1593090899]
 position = Vector2(842, -14)
 script = ExtResource("4_v5uil")
+spawn_time = null
 
 [node name="Marker2D9" type="Marker2D" parent="." unique_id=1056583351]
 position = Vector2(925, -14)
 script = ExtResource("4_v5uil")
+spawn_time = null
 
 [node name="Marker2D10" type="Marker2D" parent="." unique_id=1486891674]
 position = Vector2(1005, -14)
 script = ExtResource("4_v5uil")
+spawn_time = null
 
 [node name="Marker2D11" type="Marker2D" parent="." unique_id=25946079]
 position = Vector2(1097, -14)
 script = ExtResource("4_v5uil")
+spawn_time = null
 
 [node name="BaseGroundedEnemy" parent="." unique_id=1762067699 instance=ExtResource("5_5722l")]
 position = Vector2(502, 354)
@@ -144,6 +156,9 @@ enemy_color = 4
 [node name="BaseGroundedEnemy3" parent="." unique_id=500479904 instance=ExtResource("5_5722l")]
 position = Vector2(753, 338)
 enemy_color = 5
+
+[node name="FlyingEnemy" parent="." unique_id=1920783800 instance=ExtResource("7_at1ld")]
+position = Vector2(451, 262)
 
 [node name="HUD" parent="." unique_id=1992723618 instance=ExtResource("6_ilhis")]
 

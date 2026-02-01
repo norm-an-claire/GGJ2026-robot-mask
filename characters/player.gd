@@ -90,7 +90,9 @@ func _physics_process(delta: float) -> void:
 	for i in get_slide_collision_count():
 		var collision := get_slide_collision(i)
 		var collider := collision.get_collider()
-		if collider.is_in_group("enemy") and collider.enemy_color != player_mask:
+		if collider.is_in_group("enemy"):
+			if not collider is FlyingEnemy and collider.enemy_color == player_mask:
+				return
 			knockback_impulse = sign(global_position.x - collision.get_position().x) * 400
 			print("hit an enemy")
 			_take_hit()
@@ -104,10 +106,10 @@ func _unhandled_input(event: InputEvent) -> void:
 	if not attacking:
 		if Input.is_action_pressed("move_left"):
 			sprite.flip_h = true
-			hitbox.get_child(0).position.x = -17
+			hitbox.get_child(0).position.x = -9
 		elif Input.is_action_pressed("move_right"):
 			sprite.flip_h = false
-			hitbox.get_child(0).position.x = 17
+			hitbox.get_child(0).position.x = 9
 	
 
 	if event.is_action_pressed("melee") and not attacking:
