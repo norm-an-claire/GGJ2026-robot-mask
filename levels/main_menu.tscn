@@ -65,7 +65,7 @@ normal = Vector2(1, 0)
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_ah2my"]
 normal = Vector2(1, 0)
 
-[node name="Level" type="Node2D" unique_id=30942698]
+[node name="Level2" type="Node2D" unique_id=30942698]
 
 [node name="Ground" type="TileMapLayer" parent="." unique_id=1837972248]
 position = Vector2(94.18, -1)
