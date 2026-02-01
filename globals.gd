@@ -7,4 +7,3 @@ enum MaskColors {
 	REDMASK,
 	GREENMASK
 }
-

@@ -18,6 +18,7 @@ config/features=PackedStringArray("4.6", "Forward Plus")
 
 Globals="*uid://b3hw82ao8dv5g"
 SignalBus="*uid://c8utlqf3pjrnk"
+MenuMusicPlayer="*uid://dhw3kyxh5hc1j"
 
 [display]
 

@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://de0io12smjivb"]
+
+[ext_resource type="Script" uid="uid://cq8eo4uh7634l" path="res://manager_scripts/audio_manager.gd" id="1_x4qs5"]
+[ext_resource type="AudioStream" uid="uid://bhf18six5e7uy" path="res://assets/sounds_and_music/mainbattle.ogg" id="2_6l5cd"]
+[ext_resource type="AudioStream" uid="uid://qdcjqu053vis" path="res://assets/sounds_and_music/mask_songs/bluemasksong.ogg" id="3_ctloy"]
+[ext_resource type="AudioStream" uid="uid://b6wxl4pl7ah5" path="res://assets/sounds_and_music/mask_songs/greenbugmask.ogg" id="4_mf2s7"]
+[ext_resource type="AudioStream" uid="uid://b1qmhboooo5k6" path="res://assets/sounds_and_music/mask_songs/redtankmask.ogg" id="5_xhpa4"]
+
+[node name="AudioManager" type="Node" unique_id=1504197280]
+script = ExtResource("1_x4qs5")
+
+[node name="BaseMusicSource" type="AudioStreamPlayer" parent="." unique_id=1574413192]
+stream = ExtResource("2_6l5cd")
+volume_db = -10.0
+autoplay = true
+parameters/looping = true
+
+[node name="BlueMaskMusicSource" type="AudioStreamPlayer" parent="." unique_id=1190580705]
+stream = ExtResource("3_ctloy")
+volume_db = -80.0
+parameters/looping = true
+
+[node name="GreenMaskMusicSource" type="AudioStreamPlayer" parent="." unique_id=1285816101]
+stream = ExtResource("4_mf2s7")
+volume_db = -80.0
+parameters/looping = true
+
+[node name="RedMaskMusicSource" type="AudioStreamPlayer" parent="." unique_id=390408685]
+stream = ExtResource("5_xhpa4")
+volume_db = -80.0
+parameters/looping = true

@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://dhw3kyxh5hc1j"]
+
+[ext_resource type="AudioStream" uid="uid://3kqllqe1a4sd" path="res://assets/sounds_and_music/title.ogg" id="1_js5i5"]
+
+[node name="MenuMusicPlayers" type="AudioStreamPlayer" unique_id=2127272650]
+stream = ExtResource("1_js5i5")
+volume_db = -5.0
+autoplay = true
+parameters/looping = true
