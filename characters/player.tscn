@@ -410,6 +410,7 @@ _data = {
 size = Vector2(26, 20)
 
 [node name="Player" type="CharacterBody2D" unique_id=123481848 groups=["player"]]
+collision_layer = 64
 collision_mask = 29
 script = ExtResource("1_3eadt")
 game_over_screen = "uid://be1yhftawq0iu"

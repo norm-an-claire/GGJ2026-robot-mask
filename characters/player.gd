@@ -26,7 +26,7 @@ var jump_force: float = 0.0
 
 var player_mask: int
 var mask_color_modulate: Dictionary[int, Color] = {
-	Globals.MaskColors.UNMASKED: Color.GRAY,
+	Globals.MaskColors.UNMASKED: Color.WHITE,
 	Globals.MaskColors.BLUEMASK: Color.BLUE,
 	Globals.MaskColors.REDMASK: Color.RED,
 	Globals.MaskColors.GREENMASK: Color.YELLOW
@@ -129,16 +129,22 @@ func _on_mask_pickup(body: Area2D) -> void:
 		set_collision_mask_value( Globals.MaskColors.REDMASK, true)
 		set_collision_mask_value( Globals.MaskColors.GREENMASK, true)
 
-		# disable collision on the mask type that we just picked up
-		set_collision_mask_value( player_mask, false )
-		body.animated_sprite.duplicate()
 		if mask_position.get_child_count() > 0:
 			var old_mask_sprite = mask_position.get_child(0)
 			mask_position.remove_child(old_mask_sprite)
 			old_mask_sprite.queue_free()
-		mask_position.add_child(body.animated_sprite.duplicate())
-		mask_position.get_child(0).play("default")
-		mask_position.get_child(0).scale = Vector2(.3, .3)
+
+		if not body.mask_color == 0: 
+			# disable collision on the mask type that we just picked up
+			set_collision_mask_value( player_mask, false )
+			
+			mask_position.add_child(body.animated_sprite.duplicate())
+			mask_position.get_child(0).play("default")
+			mask_position.get_child(0).scale = Vector2(.3, .3)
+		else:
+			if hit_points < 3:
+				hit_points += 1
+			SignalBus.player_damaged.emit(hit_points)
 
 		body.player_picked_me_up()
 
@@ -156,7 +162,6 @@ func _take_hit() -> void:
 	invuln_timer.start()
 	_toggle_enemy_collisions( false )
 	if hit_points <= 0:
-		print("u ded!")
 		SignalBus.player_died.emit()
 		get_tree().change_scene_to_file(game_over_screen)
 		hit_points = 3

@@ -212,11 +212,11 @@ shape = SubResource("CapsuleShape2D_ua1oq")
 
 [node name="LeftEdgeDetector" type="RayCast2D" parent="." unique_id=649242390]
 unique_name_in_owner = true
-target_position = Vector2(-32, 24)
+target_position = Vector2(-19, 4)
 
 [node name="RightEdgeDetector" type="RayCast2D" parent="." unique_id=1834337012]
 unique_name_in_owner = true
-target_position = Vector2(32, 24)
+target_position = Vector2(20, 3)
 
 [node name="BlueEnemySprite" type="AnimatedSprite2D" parent="." unique_id=463239356]
 unique_name_in_owner = true

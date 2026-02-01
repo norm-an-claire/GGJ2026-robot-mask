@@ -82,6 +82,7 @@ texture = ExtResource("2_7rktv")
 [node name="PlayZone_Area2D" type="Area2D" parent="Ground/PlayLabelGroup" unique_id=781423188]
 position = Vector2(291, 494)
 scale = Vector2(0.6, 0.6)
+collision_mask = 65
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ground/PlayLabelGroup/PlayZone_Area2D" unique_id=378920771]
 position = Vector2(-6.1333923, 19.166626)
@@ -98,6 +99,7 @@ texture = ExtResource("3_nwbki")
 [node name="OptionsZone_Area2D" type="Area2D" parent="Ground/OptionsLabelGroup" unique_id=802221561]
 position = Vector2(163.00003, 428.99997)
 scale = Vector2(0.6, 0.6)
+collision_mask = 65
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ground/OptionsLabelGroup/OptionsZone_Area2D" unique_id=113623068]
 position = Vector2(-6.1333923, 19.166626)
@@ -114,6 +116,7 @@ texture = ExtResource("4_pppj1")
 [node name="PlayZone_Area2D3" type="Area2D" parent="Ground/ExitLabelGroup" unique_id=545311431]
 position = Vector2(162.82, 557)
 scale = Vector2(0.6, 0.6)
+collision_mask = 65
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ground/ExitLabelGroup/PlayZone_Area2D3" unique_id=2021700182]
 position = Vector2(-6.1333923, 19.166626)
@@ -122,6 +125,7 @@ script = ExtResource("3_6flho")
 
 [node name="Player" parent="." unique_id=123481848 instance=ExtResource("2_nwbki")]
 position = Vector2(529, 463)
+game_over_screen = ""
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=1134861458]
 zoom = Vector2(2, 2)

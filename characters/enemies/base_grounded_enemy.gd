@@ -14,6 +14,8 @@ var mask_scene = preload("uid://1obqxmhgvig6")
 
 const SPEED = 80.0
 const FRICTION = 30.0
+const JUMP_FORCE = -300.0
+const FALL_SPEED_CAP = 250.0
 var x_direction: int
 var target: CharacterBody2D
 var knockback_impulse: float
@@ -49,19 +51,24 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		velocity += get_gravity() * delta
+	if velocity.y > FALL_SPEED_CAP:
+		velocity.y = FALL_SPEED_CAP
 
 	if target != null and is_zero_approx(knockback_impulse):
 		animated_sprite.play("chase")
 		x_direction = 1 if (global_position.x - target.global_position.x < 0.0) else -1
-
-		if x_direction == 1 and right_edge_detector.is_colliding():
+		if right_edge_detector.is_colliding() or left_edge_detector.is_colliding() and is_on_floor():
+			velocity.y = JUMP_FORCE
+		
+		if x_direction == 1:
 			animated_sprite.flip_h = false
 			self.velocity.x = x_direction * SPEED * delta * 60
-		elif x_direction == -1 and left_edge_detector.is_colliding():
+		elif x_direction == -1:
 			animated_sprite.flip_h = true
 			self.velocity.x = x_direction * SPEED * delta * 60
 		else:
 			velocity.x = move_toward(velocity.x, 0, SPEED)
+		
 	elif not is_zero_approx(knockback_impulse):
 		animated_sprite.play("default")
 		velocity.x = knockback_impulse * delta * 60
@@ -94,7 +101,7 @@ func take_knockback(direction_sign: int) -> void:
 
 
 func _die() -> void:
-	if randi_range(0, 1) == 1:
+	if randi_range(0, 3) == 3:
 		var mask:=mask_scene.instantiate()
 		mask.mask_color = enemy_color
 		mask.global_position = global_position

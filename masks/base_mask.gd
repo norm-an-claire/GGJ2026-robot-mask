@@ -15,9 +15,7 @@ var mask_color_modulate: Dictionary[int, Color] = {
 
 
 # Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	print(mask_textures)
-	
+func _ready() -> void:	
 	# TODO - take this out, replace with assignment
 	if mask_color == -1:
 		mask_color = [Globals.MaskColors.BLUEMASK, Globals.MaskColors.REDMASK, Globals.MaskColors.GREENMASK].pick_random()

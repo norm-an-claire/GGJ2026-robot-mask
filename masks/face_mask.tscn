@@ -1,0 +1,95 @@
+[gd_scene format=3 uid="uid://b856giun4trys"]
+
+[ext_resource type="Texture2D" uid="uid://cj6s8q88u1sd1" path="res://assets/Face_Mask-Sheet.png" id="1_621hr"]
+[ext_resource type="Script" uid="uid://cbf6vfjit7xs3" path="res://masks/face_mask.gd" id="1_mk5ti"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mk5ti"]
+atlas = ExtResource("1_621hr")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bb5k5"]
+atlas = ExtResource("1_621hr")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bsx5h"]
+atlas = ExtResource("1_621hr")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_owr4k"]
+atlas = ExtResource("1_621hr")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wrnvv"]
+atlas = ExtResource("1_621hr")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8b5i1"]
+atlas = ExtResource("1_621hr")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_npots"]
+atlas = ExtResource("1_621hr")
+region = Rect2(96, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bi6kh"]
+atlas = ExtResource("1_621hr")
+region = Rect2(112, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_12ldw"]
+atlas = ExtResource("1_621hr")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_i8sak"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mk5ti")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bb5k5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bsx5h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_owr4k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wrnvv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8b5i1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_npots")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bi6kh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_12ldw")
+}],
+"loop": true,
+"name": &"pickup",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_621hr"]
+
+[node name="FaceMask" type="Area2D" unique_id=174597218]
+collision_layer = 32
+collision_mask = 0
+script = ExtResource("1_mk5ti")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2018231911]
+unique_name_in_owner = true
+sprite_frames = SubResource("SpriteFrames_i8sak")
+animation = &"pickup"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=547708236]
+shape = SubResource("RectangleShape2D_621hr")

@@ -10,6 +10,8 @@ var target: CharacterBody2D
 var knockback_impulse: float
 var hit_points: int = 2
 
+var mask_scene :PackedScene = preload("uid://b856giun4trys")
+
 @onready var animated_sprite: AnimatedSprite2D = %Sprite2D
 
 # Called when the node enters the scene tree for the first time.
@@ -72,5 +74,9 @@ func take_knockback(direction_sign: int) -> void:
 
 
 func _die() -> void:
+	if randi_range(0, 1) == 1:
+		var mask:=mask_scene.instantiate()
+		mask.global_position = global_position
+		get_tree().get_first_node_in_group("level").call_deferred("add_child", mask)
 	get_parent().remove_child(self)
 	queue_free()
