@@ -80,7 +80,7 @@ func _physics_process(delta: float) -> void:
 	for i in get_slide_collision_count():
 		var collision := get_slide_collision(i)
 		var collider := collision.get_collider()
-		if collider.is_in_group("enemy"):
+		if collider.is_in_group("enemy") and collider.enemy_color != player_mask:
 			knockback_impulse = sign(global_position.x - collision.get_position().x) * 400
 			print("hit an enemy")
 			_take_hit()
@@ -110,16 +110,17 @@ func _on_mask_pickup(body: Area2D) -> void:
 		print(self, "picked up a mask!")
 		modulate = mask_color_modulate[ body.mask_color ]
 		SignalBus.player_picked_up_mask.emit( body.mask_color )
+		player_mask = body.mask_color
 		body.player_picked_me_up()
 
 
 func damage_enemy(body: Node2D):
 	if body is CharacterBody2D and body is not Player:
-		if body.get_collision_layer_value(Globals.MaskColors.BLUEMASK):
-			print("impacted ", body)
-			if body.has_method("take_knockback"):
-				print(sign(body.global_position.x - global_position.x))
-				body.take_knockback( sign(body.global_position.x - global_position.x) )
+		#if body.get_collision_layer_value(Globals.MaskColors.BLUEMASK):
+		print("impacted ", body)
+		if body.has_method("take_knockback"):
+			print(sign(body.global_position.x - global_position.x))
+			body.take_knockback( sign(body.global_position.x - global_position.x) )
 
 
 func _take_hit() -> void:

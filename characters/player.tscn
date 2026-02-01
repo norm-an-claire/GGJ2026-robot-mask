@@ -409,7 +409,7 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3eadt"]
 size = Vector2(20, 12)
 
-[node name="Player" type="CharacterBody2D" unique_id=123481848]
+[node name="Player" type="CharacterBody2D" unique_id=123481848 groups=["player"]]
 collision_mask = 29
 script = ExtResource("1_3eadt")
 
@@ -429,7 +429,7 @@ unique_name_in_owner = true
 collision_layer = 0
 collision_mask = 32
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="MaskPickupRange" unique_id=1956865841 groups=["player"]]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MaskPickupRange" unique_id=1956865841]
 position = Vector2(0, -1)
 shape = SubResource("CircleShape2D_3eadt")
 debug_color = Color(0.96146566, 0, 0.4509501, 0)

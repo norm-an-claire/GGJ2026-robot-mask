@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
-var enemy_color: int = Globals.MaskColors.BLUEMASK
 
+var enemy_color: int = Globals.MaskColors.BLUEMASK
 
 var mask_color_modulate: Dictionary[int, Color] = {
 	Globals.MaskColors.BLUEMASK: Color.BLUE,
@@ -23,9 +23,12 @@ var knockback_impulse: float
 
 
 func _enter_tree() -> void:
+	for i in range(Globals.MaskColors.BLUEMASK, Globals.MaskColors.YELLOWMASK + 1):
+		set_collision_layer_value(enemy_color, false)	
 	set_collision_layer_value(enemy_color, true)
 	SignalBus.player_picked_up_mask.connect(_alter_target)
 	visual.modulate = mask_color_modulate[ enemy_color ]
+	
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
