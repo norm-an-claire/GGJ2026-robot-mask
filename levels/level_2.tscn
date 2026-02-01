@@ -7,12 +7,9 @@
 [ext_resource type="Script" uid="uid://c2a600il3ql0f" path="res://levels/enemy_spawner.gd" id="4_v5uil"]
 [ext_resource type="PackedScene" uid="uid://ba4r3drtgbxjk" path="res://characters/enemies/base_grounded_enemy.tscn" id="5_5722l"]
 [ext_resource type="PackedScene" uid="uid://qkrwdsc0bfqm" path="res://canvas_scenes/main_ui.tscn" id="6_ilhis"]
-<<<<<<< HEAD
 [ext_resource type="PackedScene" uid="uid://cxmpdjjklg3t0" path="res://characters/enemies/flying_enemy.tscn" id="7_at1ld"]
 [ext_resource type="AudioStream" uid="uid://bhf18six5e7uy" path="res://assets/sounds_and_music/mainbattle.ogg" id="7_ep78u"]
-=======
 [ext_resource type="PackedScene" uid="uid://de0io12smjivb" path="res://singleton_scenes/audio_manager.tscn" id="8_dfjjl"]
->>>>>>> 85755c32861a52101a544902b30e0b5cd81f4246
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_pqqg8"]
 texture = ExtResource("1_mi4ay")
