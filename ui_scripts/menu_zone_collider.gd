@@ -70,4 +70,6 @@ func _activate_zone() -> void:
 			pass
 		"Play":
 			var next_level = load("res://levels/level_2.tscn")
+			# Deactivate MenuMusicPlayer
+			MenuMusicPlayer.stop()
 			get_tree().change_scene_to_packed(next_level)
