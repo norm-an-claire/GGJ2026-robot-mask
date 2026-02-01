@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://qkrwdsc0bfqm"]
 
 [ext_resource type="Texture2D" uid="uid://cx875cgjinm2x" path="res://assets/ui_assets/full_health_base.png" id="1_3n3iw"]
+[ext_resource type="Script" uid="uid://ctcpq3ptxoeel" path="res://ui_scripts/health_indicator.gd" id="2_nayg4"]
 
 [node name="HUD" type="CanvasLayer" unique_id=1992723618]
 
@@ -20,3 +21,4 @@ horizontal_alignment = 1
 position = Vector2(57, 596)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("1_3n3iw")
+script = ExtResource("2_nayg4")
