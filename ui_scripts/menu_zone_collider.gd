@@ -1,8 +1,12 @@
 extends CollisionShape2D
 
 const ACTIVATION_TIME = 3.0  # 3 seconds
+const TARGET_COLOR = Color.DARK_BLUE
+const START_COLOR = Color.WHITE
+const COLOR_LERP_SCALE = 0.01
 
 var area_2d: Area2D
+var label_group: Node2D
 var timer: float = 0.0
 var player_in_zone: bool = false
 var zone_type: String = ""
@@ -11,6 +15,7 @@ var zone_type: String = ""
 func _ready() -> void:
 	# Get the parent Area2D
 	area_2d = get_parent() as Area2D
+	label_group = area_2d.get_parent()
 	if not area_2d:
 		push_error("menu_zone_collider: Parent must be an Area2D")
 		return
@@ -34,11 +39,14 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if player_in_zone:
 		timer += delta
+		# Step color toward TARGET_COLOR
+		label_group.modulate = lerp(label_group.modulate, TARGET_COLOR, COLOR_LERP_SCALE)
 		
 		if timer >= ACTIVATION_TIME:
 			_activate_zone()
 			timer = 0.0  # Reset after activation
 			player_in_zone = false  # Prevent multiple activations
+			label_group.modulate = START_COLOR
 
 func _on_body_entered(body: Node2D) -> void:
 	# Check if the body is the player (using the "player" group)
@@ -51,6 +59,7 @@ func _on_body_exited(body: Node2D) -> void:
 	if body.is_in_group("player"):
 		player_in_zone = false
 		timer = 0.0  # Reset timer when player leaves
+		label_group.modulate = START_COLOR
 
 func _activate_zone() -> void:
 	match zone_type:
