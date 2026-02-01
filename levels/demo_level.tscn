@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://1obqxmhgvig6" path="res://masks/base_mask.tscn" id="4_dmrny"]
 [ext_resource type="PackedScene" uid="uid://ba4r3drtgbxjk" path="res://characters/enemies/base_grounded_enemy.tscn" id="5_ah2my"]
 [ext_resource type="PackedScene" uid="uid://qkrwdsc0bfqm" path="res://canvas_scenes/main_ui.tscn" id="6_jo783"]
+[ext_resource type="AudioStream" uid="uid://bhf18six5e7uy" path="res://assets/sounds_and_music/mainbattle.ogg" id="7_pjwgr"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jo783"]
 texture = ExtResource("1_ah2my")
@@ -97,3 +98,8 @@ position = Vector2(864, 464)
 position = Vector2(1384, 424)
 
 [node name="HUD" parent="." unique_id=1992723618 instance=ExtResource("6_jo783")]
+
+[node name="BackgroundMusicSource" type="AudioStreamPlayer" parent="." unique_id=1244156769]
+stream = ExtResource("7_pjwgr")
+volume_db = -10.0
+autoplay = true

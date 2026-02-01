@@ -23,10 +23,13 @@ func _on_player_damaged(currHitPoints: int):
 			# Set sprite to full_health_base
 			self.texture = sprites["full_health"]
 		2:
+			# Set sprite to medium_health_base
 			self.texture = sprites["medium_health"]
 		1:
+			# Set sprite to low_health_base
 			self.texture = sprites["low_health"]
 		0: 
+			# This shouldn't ever matter, but keep it to low_health
 			self.texture = sprites["low_health"]
 		_:
 			pass
