@@ -3,19 +3,29 @@ extends CharacterBody2D
 var enemy_color: int = Globals.MaskColors.BLUEMASK
 
 
+var mask_color_modulate: Dictionary[int, Color] = {
+	Globals.MaskColors.BLUEMASK: Color.BLUE,
+	Globals.MaskColors.REDMASK: Color.RED,
+	Globals.MaskColors.YELLOWMASK: Color.YELLOW
+}
+
+
 const SPEED = 100.0
+const FRICTION = 30.0
 var x_direction: int
 var target: CharacterBody2D
+var knockback_impulse: float
 
 @onready var left_edge_detector: RayCast2D = %LeftEdgeDetector
 @onready var right_edge_detector: RayCast2D = %RightEdgeDetector
-
+@export var visual: CanvasItem
 
 
 
 func _enter_tree() -> void:
 	set_collision_layer_value(enemy_color, true)
 	SignalBus.player_picked_up_mask.connect(_alter_target)
+	visual.modulate = mask_color_modulate[ enemy_color ]
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -27,14 +37,20 @@ func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 
-	if target != null:
+	if target != null and is_zero_approx(knockback_impulse):
 		x_direction = 1 if (global_position.x - target.global_position.x < 0.0) else -1
+
 		if x_direction == 1 and right_edge_detector.is_colliding():
 			self.velocity.x = x_direction * SPEED * delta * 60
 		elif x_direction == -1 and left_edge_detector.is_colliding():
 			self.velocity.x = x_direction * SPEED * delta * 60
 		else:
 			velocity.x = move_toward(velocity.x, 0, SPEED)
+	elif not is_zero_approx(knockback_impulse):
+		velocity.x = knockback_impulse * delta * 60
+		velocity.y = -abs(knockback_impulse) * delta * 60
+
+		knockback_impulse = move_toward(knockback_impulse, 0, FRICTION)
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 	
@@ -45,3 +61,7 @@ func _physics_process(delta: float) -> void:
 func _alter_target(player_color: int) -> void:
 	if player_color == enemy_color:
 		target = null
+
+
+func take_knockback(direction_sign: int) -> void:
+	knockback_impulse = 300 * direction_sign

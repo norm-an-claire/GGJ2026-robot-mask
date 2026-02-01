@@ -2,18 +2,35 @@
 
 [ext_resource type="Script" uid="uid://dkrr6tmcpgo8v" path="res://characters/player.gd" id="1_3eadt"]
 [ext_resource type="Texture2D" uid="uid://wvintdg4t80a" path="res://assets/PC-Run-Sheet.png" id="2_3eadt"]
+[ext_resource type="Texture2D" uid="uid://3a5entg7xje2" path="res://assets/Basic-Attack-Sheet.png" id="2_tory2"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3eadt"]
 radius = 3.0
 height = 26.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_n8jd0"]
-atlas = ExtResource("2_3eadt")
-region = Rect2(64, 0, 32, 64)
+atlas = ExtResource("2_tory2")
+region = Rect2(0, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_q605b"]
-atlas = ExtResource("2_3eadt")
-region = Rect2(0, 0, 32, 64)
+atlas = ExtResource("2_tory2")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eho78"]
+atlas = ExtResource("2_tory2")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8sqrr"]
+atlas = ExtResource("2_tory2")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6rrl0"]
+atlas = ExtResource("2_tory2")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eus45"]
+atlas = ExtResource("2_tory2")
+region = Rect2(320, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tory2"]
 atlas = ExtResource("2_3eadt")
@@ -51,6 +68,18 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_q605b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eho78")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8sqrr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6rrl0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eus45")
 }],
 "loop": false,
 "name": &"attack",
@@ -177,10 +206,10 @@ tracks/2/path = NodePath("AnimatedSprite2D:frame")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.033333335, 0.2),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 0.01, 0.033333335, 0.08, 0.16, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [0, 1, 0]
+"values": [0, 1, 2, 3, 4, 5]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -193,6 +222,36 @@ tracks/3/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [false, true, false]
+}
+
+[sub_resource type="Animation" id="Animation_6t23p"]
+resource_name = "idle"
+length = 0.001
+loop_mode = 1
+step = 0.0333333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"attack"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
 }
 
 [sub_resource type="Animation" id="Animation_j31ep"]
@@ -222,6 +281,30 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AnimatedSprite2D:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AnimatedSprite2D:animation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"attack"]
 }
 
 [sub_resource type="Animation" id="Animation_h1q25"]
@@ -316,6 +399,7 @@ tracks/1/keys = {
 _data = {
 &"RESET": SubResource("Animation_3eadt"),
 &"attack": SubResource("Animation_tory2"),
+&"idle": SubResource("Animation_6t23p"),
 &"interrupt_melee": SubResource("Animation_j31ep"),
 &"run": SubResource("Animation_h1q25"),
 &"turn_left": SubResource("Animation_x0jl3"),
@@ -333,6 +417,7 @@ script = ExtResource("1_3eadt")
 shape = SubResource("CapsuleShape2D_3eadt")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1174584053]
+unique_name_in_owner = true
 position = Vector2(0, -3)
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_x0jl3")
