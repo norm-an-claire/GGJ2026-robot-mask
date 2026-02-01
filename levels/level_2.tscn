@@ -7,7 +7,7 @@
 [ext_resource type="Script" uid="uid://c2a600il3ql0f" path="res://levels/enemy_spawner.gd" id="4_v5uil"]
 [ext_resource type="PackedScene" uid="uid://ba4r3drtgbxjk" path="res://characters/enemies/base_grounded_enemy.tscn" id="5_5722l"]
 [ext_resource type="PackedScene" uid="uid://qkrwdsc0bfqm" path="res://canvas_scenes/main_ui.tscn" id="6_ilhis"]
-[ext_resource type="AudioStream" uid="uid://bhf18six5e7uy" path="res://assets/sounds_and_music/mainbattle.ogg" id="7_ep78u"]
+[ext_resource type="PackedScene" uid="uid://de0io12smjivb" path="res://singleton_scenes/audio_manager.tscn" id="8_dfjjl"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_pqqg8"]
 texture = ExtResource("1_mi4ay")
@@ -147,7 +147,4 @@ enemy_color = 5
 
 [node name="HUD" parent="." unique_id=1992723618 instance=ExtResource("6_ilhis")]
 
-[node name="BackgroundMusicSource" type="AudioStreamPlayer" parent="." unique_id=169998493]
-stream = ExtResource("7_ep78u")
-volume_db = -10.0
-autoplay = true
+[node name="AudioManager" parent="." unique_id=1504197280 instance=ExtResource("8_dfjjl")]
