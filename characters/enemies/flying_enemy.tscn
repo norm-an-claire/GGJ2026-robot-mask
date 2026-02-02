@@ -50,7 +50,7 @@ height = 31.0
 
 [node name="FlyingEnemy" type="CharacterBody2D" unique_id=1920783800 groups=["enemy"]]
 collision_layer = 28
-collision_mask = 3
+collision_mask = 67
 script = ExtResource("1_v6o2r")
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="." unique_id=469086964]

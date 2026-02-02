@@ -3,10 +3,11 @@ extends Marker2D
 var enemy_scene: PackedScene = preload("uid://ba4r3drtgbxjk")
 var flying_enemy_scene: PackedScene = preload("uid://cxmpdjjklg3t0")
 var spawn_timer: Timer
-@export var spawn_time: float = 15.0
+@export var spawn_time: float = 10.0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	call_deferred("_spawn_enemy")
 	spawn_timer = Timer.new()
 
 	spawn_timer.autostart = true

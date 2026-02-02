@@ -221,6 +221,8 @@ target_position = Vector2(20, 3)
 [node name="BlueEnemySprite" type="AnimatedSprite2D" parent="." unique_id=463239356]
 unique_name_in_owner = true
 visible = false
+position = Vector2(0, 1.5000001)
+scale = Vector2(0.609375, 0.78125006)
 sprite_frames = SubResource("SpriteFrames_s8h4v")
 
 [node name="RedEnemySprite" type="AnimatedSprite2D" parent="." unique_id=352855235]
