@@ -4,6 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://b4h1ehl3b6rv3" path="res://assets/swamp.png" id="2_vreld"]
 [ext_resource type="Script" uid="uid://c2a600il3ql0f" path="res://levels/enemy_spawner.gd" id="3_yubn8"]
 [ext_resource type="PackedScene" uid="uid://dltd4tixo7vb7" path="res://characters/player.tscn" id="4_uvfk2"]
+[ext_resource type="PackedScene" uid="uid://qkrwdsc0bfqm" path="res://canvas_scenes/main_ui.tscn" id="5_prn1v"]
+[ext_resource type="PackedScene" uid="uid://de0io12smjivb" path="res://singleton_scenes/audio_manager.tscn" id="6_h5ddn"]
 
 [node name="SwampLevel" type="Node2D" unique_id=953381956 groups=["level"]]
 
@@ -13,6 +15,15 @@ scroll_scale = Vector2(0.5, 0.5)
 [node name="Sprite2D" type="Sprite2D" parent="Parallax2D" unique_id=1316249070]
 position = Vector2(577, 321)
 texture = ExtResource("2_vreld")
+
+[node name="Player" parent="." unique_id=123481848 instance=ExtResource("4_uvfk2")]
+position = Vector2(578, 493)
+
+[node name="Camera2D" type="Camera2D" parent="Player" unique_id=1406202093]
+zoom = Vector2(2, 2)
+limit_left = 0
+limit_right = 1152
+limit_bottom = 642
 
 [node name="Ground" type="TileMapLayer" parent="." unique_id=545126891]
 modulate = Color(0.14509805, 0.627451, 0.20784314, 1)
@@ -47,11 +58,6 @@ script = ExtResource("3_yubn8")
 position = Vector2(267, 55)
 script = ExtResource("3_yubn8")
 
-[node name="Player" parent="." unique_id=123481848 instance=ExtResource("4_uvfk2")]
-position = Vector2(578, 493)
+[node name="HUD" parent="." unique_id=1992723618 instance=ExtResource("5_prn1v")]
 
-[node name="Camera2D" type="Camera2D" parent="Player" unique_id=1406202093]
-zoom = Vector2(2, 2)
-limit_left = 0
-limit_right = 1152
-limit_bottom = 642
+[node name="AudioManager" parent="." unique_id=1504197280 instance=ExtResource("6_h5ddn")]
