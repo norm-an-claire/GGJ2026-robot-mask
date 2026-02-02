@@ -74,6 +74,7 @@ func take_knockback(direction_sign: int) -> void:
 
 
 func _die() -> void:
+	SignalBus.enemy_killed.emit()
 	if randi_range(0, 1) == 1:
 		var mask:=mask_scene.instantiate()
 		mask.global_position = global_position

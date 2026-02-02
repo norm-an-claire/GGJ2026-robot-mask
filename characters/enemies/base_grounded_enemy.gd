@@ -101,6 +101,7 @@ func take_knockback(direction_sign: int) -> void:
 
 
 func _die() -> void:
+	SignalBus.enemy_killed.emit()
 	if randi_range(0, 3) == 3:
 		var mask:=mask_scene.instantiate()
 		mask.mask_color = enemy_color

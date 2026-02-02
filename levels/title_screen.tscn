@@ -1,9 +1,8 @@
 [gd_scene format=3 uid="uid://dueihy3e5u1bo"]
 
-[ext_resource type="Texture2D" uid="uid://dn24jwfntd3lw" path="res://assets/title_screen_player.png" id="1_0dgt5"]
-[ext_resource type="Texture2D" uid="uid://bg0x35xbf56f0" path="res://assets/menu_background.png" id="1_1xnr2"]
 [ext_resource type="Script" uid="uid://b5jm8khf0f358" path="res://ui_scripts/title_screen.gd" id="1_ryob0"]
 [ext_resource type="Texture2D" uid="uid://cw1brl6anxek2" path="res://assets/title_card.png" id="2_1xnr2"]
+[ext_resource type="Texture2D" uid="uid://cgrwkglycvegp" path="res://assets/title_background.PNG" id="2_74c26"]
 [ext_resource type="Script" uid="uid://ef7f84kpsdw2" path="res://ui_scripts/text_fading.gd" id="4_gynrd"]
 [ext_resource type="PackedScene" uid="uid://dhw3kyxh5hc1j" path="res://singleton_scenes/menu_music_player.tscn" id="6_74c26"]
 
@@ -20,15 +19,12 @@ offset_left = -20.0
 offset_top = -20.0
 offset_right = 1180.0
 offset_bottom = 680.0
-texture = ExtResource("1_1xnr2")
+texture = ExtResource("2_74c26")
 expand_mode = 3
 
-[node name="CharacterPortrait" type="Sprite2D" parent="CanvasLayer" unique_id=2124105474]
-position = Vector2(900, 400)
-texture = ExtResource("1_0dgt5")
-
 [node name="TitleCard" type="Sprite2D" parent="CanvasLayer" unique_id=622564707]
-position = Vector2(300, 150)
+position = Vector2(232, 122)
+scale = Vector2(0.49, 0.49)
 texture = ExtResource("2_1xnr2")
 
 [node name="StartMessage" type="Label" parent="CanvasLayer" unique_id=1203596391]
@@ -44,3 +40,4 @@ uppercase = true
 script = ExtResource("4_gynrd")
 
 [node name="MenuMusicPlayers" parent="." unique_id=2127272650 instance=ExtResource("6_74c26")]
+volume_db = -10.0

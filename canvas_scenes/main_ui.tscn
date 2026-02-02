@@ -1,12 +1,13 @@
 [gd_scene format=3 uid="uid://qkrwdsc0bfqm"]
 
 [ext_resource type="Texture2D" uid="uid://cx875cgjinm2x" path="res://assets/ui_assets/full_health_base.png" id="1_3n3iw"]
+[ext_resource type="Script" uid="uid://42svicot8u3t" path="res://ui_scripts/score_indicator.gd" id="1_e7djb"]
 [ext_resource type="Script" uid="uid://ctcpq3ptxoeel" path="res://ui_scripts/health_indicator.gd" id="2_nayg4"]
 
 [node name="HUD" type="CanvasLayer" unique_id=1992723618]
 
 [node name="ScoreLabel" type="Label" parent="." unique_id=1024921882]
-anchors_preset = -1
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 1053.0
@@ -14,8 +15,9 @@ offset_top = 10.0
 offset_right = -24.0
 offset_bottom = -604.0
 theme_override_font_sizes/font_size = 24
-text = "0000"
+text = "0"
 horizontal_alignment = 1
+script = ExtResource("1_e7djb")
 
 [node name="HealthIndicatorSprite2D" type="Sprite2D" parent="." unique_id=897367994]
 position = Vector2(57, 596)
