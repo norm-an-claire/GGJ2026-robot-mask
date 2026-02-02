@@ -61,8 +61,10 @@ func _physics_process(delta: float) -> void:
 		velocity.y = FALL_SPEED_CAP
 	elif velocity.y < 0 and Input.is_action_just_released("jump"):
 		velocity.y = LOW_JUMP_VELOCITY
+		find_child("JumpSource").play()
 	if Input.is_action_pressed("jump") and is_on_floor():
 		velocity.y = HIGH_JUMP_VELOCITY
+		find_child("JumpSource").play()
 	
 	
 	var direction := Input.get_axis("move_left", "move_right")
@@ -116,6 +118,8 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("melee") and not attacking:
 		animation_player.play("attack")
 		attacking = true
+		# Do sound effect stuff
+		find_child("PipeSwingSource").play()
 
 
 func _on_mask_pickup(body: Area2D) -> void:

@@ -3,6 +3,8 @@
 [ext_resource type="Script" uid="uid://dkrr6tmcpgo8v" path="res://characters/player.gd" id="1_3eadt"]
 [ext_resource type="Texture2D" uid="uid://wvintdg4t80a" path="res://assets/PC-Run-Sheet.png" id="2_3eadt"]
 [ext_resource type="Texture2D" uid="uid://3a5entg7xje2" path="res://assets/Basic-Attack-Sheet.png" id="2_tory2"]
+[ext_resource type="AudioStream" uid="uid://d03t1uef8mnfs" path="res://assets/sounds_and_music/player_sound_effects/pipeswing.ogg" id="4_evndh"]
+[ext_resource type="AudioStream" uid="uid://becqmrmoq6gbv" path="res://assets/sounds_and_music/player_sound_effects/jump.ogg" id="5_h1q25"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3eadt"]
 radius = 3.0
@@ -459,3 +461,10 @@ one_shot = true
 [node name="MaskPosition" type="Marker2D" parent="." unique_id=177596360]
 unique_name_in_owner = true
 position = Vector2(0, -8)
+
+[node name="PipeSwingSource" type="AudioStreamPlayer2D" parent="." unique_id=1408596942]
+stream = ExtResource("4_evndh")
+
+[node name="JumpSource" type="AudioStreamPlayer2D" parent="." unique_id=257320976]
+stream = ExtResource("5_h1q25")
+volume_db = -10.0
