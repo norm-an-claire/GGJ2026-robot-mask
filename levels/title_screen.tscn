@@ -7,7 +7,6 @@
 [ext_resource type="PackedScene" uid="uid://dhw3kyxh5hc1j" path="res://singleton_scenes/menu_music_player.tscn" id="6_74c26"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_gynrd"]
-font_color = Color(0, 0, 0, 1)
 
 [node name="TitleScreen" type="Node2D" unique_id=1342509705]
 script = ExtResource("1_ryob0")

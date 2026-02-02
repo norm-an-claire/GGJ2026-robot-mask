@@ -28,8 +28,10 @@ func _ready() -> void:
 	var parent_label = area_2d.get_parent()
 	if parent_label:
 		var label_name = parent_label.name
-		if "Play" in label_name:
-			zone_type = "Play"
+		if "City" in label_name:
+			zone_type = "City"
+		elif "Swamp" in label_name:
+			zone_type = "Swamp"
 		elif "Options" in label_name:
 			zone_type = "Options"
 		elif "Exit" in label_name:
@@ -68,8 +70,13 @@ func _activate_zone() -> void:
 		"Options":
 			# Placeholder - do nothing
 			pass
-		"Play":
+		"City":
 			var next_level = load("res://levels/level_2.tscn")
+			# Deactivate MenuMusicPlayer
+			MenuMusicPlayer.stop()
+			get_tree().change_scene_to_packed(next_level)
+		"Swamp":
+			var next_level = load("res://levels/swamp_level.tscn")
 			# Deactivate MenuMusicPlayer
 			MenuMusicPlayer.stop()
 			get_tree().change_scene_to_packed(next_level)

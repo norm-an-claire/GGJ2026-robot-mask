@@ -1,6 +1,6 @@
 extends Node
 
-var alphaChange = -0.03
+var alphaChange = -0.02
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
